@@ -15,6 +15,7 @@
                         <div class="bg-gray-600 p-8 rounded shadow-md">
                             <h1 class="text-3xl font-bold mb-4 text-center">Liste des Utilisateurs</h1>
                             <table class="min-w-full">
+                                <!-- Table Header -->
                                 <thead>
                                 <tr>
                                     <th class="border px-4 py-2">Nom</th>
@@ -22,12 +23,11 @@
                                     <th class="border px-4 py-2">Actions</th>
                                 </tr>
                                 </thead>
+                                <!-- Table Body -->
                                 <tbody>
                                 @foreach ($users as $user)
                                     <tr>
-                                        <td class="border px-4 py-2">
-                                            {{ $user->name }}
-                                        </td>
+                                        <td class="border px-4 py-2">{{ $user->name }}</td>
                                         <td class="border px-4 py-2">
                                             @if($user->statut == 1)
                                                 Coach
@@ -36,12 +36,21 @@
                                             @endif
                                         </td>
                                         <td class="border px-4 py-2 text-center">
-                                            <a href="{{ route('users.edit', $user->id) }}" class="text-blue-500 hover:underline">Voir</a>
+                                            <a href="{{ route('users.show', $user->id) }}" class="text-blue-500 hover:underline">Voir</a>
                                         </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                             </table>
+
+                            <!-- Bouton de création d'utilisateur -->
+                            @if($user->statut == 2)
+                                <div class="mt-5">
+                                    <a href="{{ route('users.create') }}" class="text-blue-500 flex items-center">
+                                        Créer un utilisateur
+                                    </a>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>

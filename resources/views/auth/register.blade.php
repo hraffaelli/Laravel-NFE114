@@ -16,6 +16,13 @@
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
+        <!-- Statut rameur ou coach -->
+        <div class="mt-4">
+            <x-input-label for="statut" :value="__('Statut')" />
+            <x-text-input id="statut" class="block mt-1 w-full" type="statut" name="statut" :value="old('statut')" required autocomplete="statut" />
+            <x-input-error :messages="$errors->get('statut')" class="mt-2" />
+        </div>
+
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
