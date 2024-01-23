@@ -20,7 +20,9 @@
                                 <tr>
                                     <th class="border px-4 py-2">Nom</th>
                                     <th class="border px-4 py-2">Statut</th>
+                                    @if(auth()->user()->statut == 1)
                                     <th class="border px-4 py-2">Actions</th>
+                                    @endif
                                 </tr>
                                 </thead>
                                 <!-- Table Body -->
@@ -35,9 +37,11 @@
                                                 Rameur
                                             @endif
                                         </td>
+                                        @if(auth()->user()->statut == 1)
                                         <td class="border px-4 py-2 text-center">
                                             <a href="{{ route('users.show', $user->id) }}" class="text-blue-500 hover:underline">Voir</a>
                                         </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                                 </tbody>
