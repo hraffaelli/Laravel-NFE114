@@ -44,7 +44,7 @@
                             </table>
 
                             <!-- Bouton de création d'utilisateur -->
-                            @if($user->statut == 2)
+                            @if(auth()->user()->statut == 1)
                                 <div class="mt-5">
                                     <a href="{{ route('users.create') }}" class="text-blue-500 flex items-center">
                                         Créer un utilisateur
