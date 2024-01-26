@@ -1,10 +1,16 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+<section>
+    <header>
+        <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+            {{ __('Créer un Utilisateur') }}
+        </h2>
+    </header>
+
+    <form method="post" action="{{ route('profile.store') }}" class="mt-6 space-y-6">
         @csrf
 
         <!-- Name -->
         <div>
-            <x-input-label for="name" :value="__('Name')" />
+            <x-input-label for=" name" :value="__('Name')" />
             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
@@ -17,10 +23,18 @@
         </div>
 
         <!-- Statut -->
-        <div>
-            <x-input-label for="statut" :value="__('Statut')" />
-            <x-text-input id="statut" class="block mt-1 w-full" type="text" name="statut" :value="old('statut')" required autofocus autocomplete="statut" />
-            <x-input-error :messages="$errors->get('statut')" class="mt-2" />
+        <div class="mt-4">
+            <label for="statut" class="block font-medium text-sm text-gray-700">{{ __('Statut') }}</label>
+            <select id="statut" name="statut" class="block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" required autofocus autocomplete="statut">
+                <option value="">Sélectionnez un statut</option>
+                @foreach($statuts as $statut)
+                <option value="{{ $statut->id }}">{{ $statut->libelle }}</option>
+                @endforeach
+                <!-- Ajoutez autant d'options que nécessaire -->
+            </select>
+            @error('statut')
+            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+            @enderror
         </div>
 
         <!-- Password -->
@@ -42,13 +56,9 @@
         </div>
 
         <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
             <x-primary-button class="ms-4">
                 {{ __('Register') }}
             </x-primary-button>
         </div>
     </form>
-</x-guest-layout>
+</section>

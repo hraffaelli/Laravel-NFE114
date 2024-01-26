@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('seances', function (Blueprint $table) {
-
+        Schema::create('poste_rameurs', function (Blueprint $table) {
             $table->id();
-            $table->date('date');
-            $table->string('lieu');
-            $table->time('horaire');
-            $table->integer('fk_vaa');
-            $table->integer('max_users');
+            $table->string('libelle');
             $table->timestamps();
         });
     }
@@ -28,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('seance');
+        Schema::dropIfExists('poste_rameurs');
     }
 };

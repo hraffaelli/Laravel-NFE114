@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Seance extends Model
+class Participant extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'date',
-        'lieu',
-        'horaire',
-        'max_users',
+        'id_seance',
+        'id_user',
+        //'id_poste_rameur',
     ];
 }

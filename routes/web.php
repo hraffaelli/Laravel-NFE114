@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SeanceController;
+use App\Http\Controllers\Auth\PasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,9 +25,31 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+
+    Route::get('/profile/list', [ProfileController::class, 'index'])->name('profile.index');
+    Route::get('/profile/create', [ProfileController::class, 'create'])->name('profile.create');
+    Route::post('/profile/store', [ProfileController::class, 'store'])->name('profile.store');
+    Route::delete('/profile/delete/{post}', [ProfileController::class, 'delete'])->name('profile.delete');
+    Route::get('/profile/edit/{post}', [ProfileController::class, 'edit_multi'])->name('profile.edit-multi');
+    Route::put('/profile/update/{post}', [ProfileController::class, 'update_multi'])->name('profile.update-multi');
+    Route::delete('/profile/destroy/{post}', [ProfileController::class, 'destroy_multi'])->name('profile.destroy');
+    Route::put('/profile/edit/password/{post}', [PasswordController::class, 'update_multi'])->name('password.update_multi');
+
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/seances/participant/add/{post}', [SeanceController::class, 'addParticipant'])->name('seances.addParticipant');
+    Route::get('/seances/participant/delete/{post}', [SeanceController::class, 'deleteParticipant'])->name('seances.deleteParticipant');
+
+    Route::get('/seances', SeanceController::class . '@index')->name('seances.index');
+    Route::get('/seances/create', SeanceController::class . '@create')->name('seances.create');
+    Route::post('/seances', SeanceController::class . '@store')->name('seances.store');
+    Route::get('/seances/{post}', SeanceController::class . '@show')->name('seances.show');
+    Route::get('/seances/edit/{post}', SeanceController::class . '@edit')->name('seances.edit');
+    Route::put('/seances/{post}', SeanceController::class . '@update')->name('seances.update');
+    Route::delete('/seances/{post}', SeanceController::class . '@destroy')->name('seances.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

@@ -6,6 +6,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Seance;
 use App\Models\User;
+use App\Models\Participant;
+use App\Models\PosteRameur;
 use App\Models\UsersStatuts;
 
 class DatabaseSeeder extends Seeder
@@ -22,28 +24,50 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        $User = User::create([
+        User::create([
             'name' => 'Tamatoa',
             'email' => 'tamatoa@example.com',
+            'statut' => '2',
             'password' => '123456',
-            'statut' => '1',
-
         ]);
 
-        $Seance = Seance::create([
+        Seance::create([
             'date' => '2024-01-27',
             'lieu' => 'Papeete',
             'horaire' => '17:30:00',
-            'fk_vaa' => '1',
             'max_users' => '6',
         ]);
 
-        $StatutRameur = UsersStatuts::create([
+        UsersStatuts::create([
             'libelle' => 'Rameur',
         ]);
 
-        $StatutCoach = UsersStatuts::create([
+        UsersStatuts::create([
             'libelle' => 'Coach',
+        ]);
+
+        PosteRameur::create([
+            'libelle' => 'Fa\'ahoro',
+        ]);
+
+        PosteRameur::create([
+            'libelle' => 'Mono Fa\'ahoro',
+        ]);
+
+        PosteRameur::create([
+            'libelle' => 'Moteurs 1',
+        ]);
+
+        PosteRameur::create([
+            'libelle' => 'Moteurs 2',
+        ]);
+
+        PosteRameur::create([
+            'libelle' => 'Mono Peperu',
+        ]);
+
+        PosteRameur::create([
+            'libelle' => 'Peperu',
         ]);
     }
 }
