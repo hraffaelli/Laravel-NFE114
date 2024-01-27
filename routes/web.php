@@ -30,10 +30,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile/create', [ProfileController::class, 'create'])->name('profile.create');
     Route::post('/profile/store', [ProfileController::class, 'store'])->name('profile.store');
     Route::delete('/profile/delete/{post}', [ProfileController::class, 'delete'])->name('profile.delete');
-    Route::get('/profile/edit/{post}', [ProfileController::class, 'edit_multi'])->name('profile.edit-multi');
-    Route::put('/profile/update/{post}', [ProfileController::class, 'update_multi'])->name('profile.update-multi');
-    Route::delete('/profile/destroy/{post}', [ProfileController::class, 'destroy_multi'])->name('profile.destroy');
-    Route::put('/profile/edit/password/{post}', [PasswordController::class, 'update_multi'])->name('password.update_multi');
+    Route::get('/profile/edit/{post}', [ProfileController::class, 'editById'])->name('profile.edit-multi');
+    Route::put('/profile/update/{post}', [ProfileController::class, 'updateById'])->name('profile.update-multi');
+    Route::delete('/profile/destroy/{post}', [ProfileController::class, 'destroyById'])->name('profile.destroy');
+    Route::put('/profile/edit/password/{post}', [PasswordController::class, 'updateById'])->name('password.updateById');
 
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

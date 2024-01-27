@@ -40,7 +40,7 @@ class ProfileController extends Controller
         ]);
     }
 
-    public function edit_multi($id)
+    public function editById($id)
     {
         $is_Coach = $this->isCoach();
         $statuts = DB::table('users_statuts')->select('users_statuts.id', 'users_statuts.libelle')->get();
@@ -64,7 +64,7 @@ class ProfileController extends Controller
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
-    public function update_multi(Request $request, $id)
+    public function updateById(Request $request, $id)
     {
         $validatedData = $request->validate([
             'name' => 'required',
@@ -98,7 +98,7 @@ class ProfileController extends Controller
         return Redirect::to('/');
     }
 
-    public function destroy_multi(User $id)
+    public function destroyById(User $id)
     {
         $user = User::find($id);
         $user->delete();

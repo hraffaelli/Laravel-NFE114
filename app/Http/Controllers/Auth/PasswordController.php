@@ -28,14 +28,33 @@ class PasswordController extends Controller
         return back()->with('status', 'password-updated');
     }
 
-    public function update_multi(Request $request, $id): RedirectResponse
+    public function updateById(Request $request, $id): RedirectResponse
     {
-        $validated = $request->validateWithBag('updatePassword', [
-            'current_password' => ['required', 'current_password'],
-            'password' => ['required', Password::defaults(), 'confirmed'],
+
+        $validated = $request->validate([
+            'current_password' => ['required'],
+            'password' => ['required'],
         ]);
-        dd($validated);
+
+        // $validated = $request->validateWithBag('updatePassword', [
+        //     'current_password' => ['required', 'current_password'],
+        //     'password' => ['required', Password::defaults(), 'confirmed'],
+        // ]);
+
+        // Fetch the user by ID
         $user = User::find($id);
+
+        if (!$user) {
+            // Handle the case where user with given ID is not found
+            return redirect()->route('some.route')->with('error', 'User not found.');
+        }
+
+        // Check if the current password matches
+        if (!Hash::check($validated['current_password'], $user->password)) {
+            return back()->withErrors(['current_password' => 'The provided password does not match your current password.']);
+        }
+
+        // Update the user's password
         $user->update([
             'password' => Hash::make($validated['password']),
         ]);
