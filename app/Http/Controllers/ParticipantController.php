@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Participant;
 use App\Models\Seance;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class ParticipantController extends Controller
@@ -30,5 +31,11 @@ class ParticipantController extends Controller
         $seances = Seance::all();
         $id = Auth::id();
         return view('seances.index', compact('seances', 'id'));
+    }
+
+    public function getRameurPost()
+    {
+        $result = DB::table('poste_rameurs')->get();
+        return $result;
     }
 }

@@ -6,6 +6,7 @@ use App\Models\Participant;
 use Illuminate\Http\Request;
 use App\Models\Seance;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ParticipantController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -16,22 +17,24 @@ class SeanceController extends Controller
      */
     public function index()
     {
-        $profileController = new ProfileController();
-        $seances = Seance::all();
-        $id = Auth::id();
-        $is_Coach = $profileController->isCoach();
-        // Call the verifyParticipant function to determine if the user is a participant for each Seance
         $participantStatus = [];
+        $is_Max_User = [];
+
+        $id = Auth::id();
+        $seances = Seance::all();
+        $profileController = new ProfileController();
+        $participantController = new ParticipantController();
+
+        $postes = $participantController->getRameurPost();
+        $is_Coach = $profileController->isCoach();
         foreach ($seances as $seance) {
             $participantStatus[$seance->id] = $this->verifyParticipant($seance->id);
         }
-
-        $is_Max_User = [];
         foreach ($seances as $seance) {
             $is_Max_User[$seance->id] = $this->isMaxUser($seance->id);
         }
 
-        return view('seances.index', compact('seances', 'id', 'participantStatus', 'is_Coach', 'is_Max_User'));
+        return view('seances.index', compact('seances', 'id', 'participantStatus', 'is_Coach', 'is_Max_User', 'postes'));
     }
 
     /**
@@ -139,6 +142,18 @@ class SeanceController extends Controller
         $result = DB::table('participants')
             ->where('id_seance', $id_seance)
             ->count();
+        return $result;
+    }
+
+    public function showParticipants($id_seance)
+    {
+        $result = DB::table('users')
+            ->join('participants', 'users.id', '=', 'participants.id_user')
+            ->join('seances', 'participants.id_seance', '=', 'seances.id')
+            ->join('poste_rameur', 'participants.id_poste_rameur', '=', 'poste_rameurs.id')
+            ->where('id_seance', $id_seance)
+            ->select('users.name', 'poste_rameurs.libelle')
+            ->get();
         return $result;
     }
 }
