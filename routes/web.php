@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -15,6 +16,7 @@ use Inertia\Inertia;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -36,3 +38,12 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+// Routes pour UsersController
+
+Route::get('/users', [UsersController::class, 'index'])->name('users.index');
+Route::get('/users/create', [UsersController::class, 'create'])->name('users.create');
+Route::post('/users/store', [UsersController::class, 'store'])->name('users.store');
+Route::get('/users/{user}/edit', [UsersController::class, 'edit'])->name('users.edit');
+Route::put('/users/{user}', [UsersController::class, 'update'])->name('users.update');
+Route::delete('/users/{user}', [UsersController::class, 'destroy'])->name('users.destroy');
