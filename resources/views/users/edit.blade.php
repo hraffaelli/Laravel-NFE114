@@ -31,8 +31,10 @@
 
                                 <div class="bg-gray-500 rounded-md p-2">
                                     <label for="statut" class="block text-white">Statut :</label>
-                                    <input type="number" name="statut" id="statut" value="{{ $user->statut }}" required
-                                           class="w-full px-4 py-2 border rounded-md bg-gray-200 text-gray-800">
+                                    <select name="statut" id="statut" class="w-full px-4 py-2 border rounded-md bg-gray-200 text-gray-800">
+                                        <option value="1">Coach</option>
+                                        <option value="2">Rameur</option>
+                                    </select>
                                 </div>
 
                                 <button type="submit"
