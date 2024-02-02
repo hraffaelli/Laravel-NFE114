@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('id_seance');
             $table->integer('id_user');
-            //$table->integer('id_poste_rameur');
+            $table->integer('id_poste_rameur');
             $table->timestamps();
         });
     }

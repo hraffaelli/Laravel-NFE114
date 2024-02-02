@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/seances/participant/add/{post}', [SeanceController::class, 'addParticipant'])->name('seances.addParticipant');
+    Route::post('/seances/participant/add/{post}', [SeanceController::class, 'addParticipant'])->name('seances.addParticipant');
     Route::get('/seances/participant/delete/{post}', [SeanceController::class, 'deleteParticipant'])->name('seances.deleteParticipant');
 
     Route::get('/seances', SeanceController::class . '@index')->name('seances.index');

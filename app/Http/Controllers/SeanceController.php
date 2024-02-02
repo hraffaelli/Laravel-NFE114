@@ -19,22 +19,27 @@ class SeanceController extends Controller
     {
         $participantStatus = [];
         $is_Max_User = [];
+        $is_Poste_Rameur = [];
 
         $id = Auth::id();
         $seances = Seance::all();
         $profileController = new ProfileController();
         $participantController = new ParticipantController();
 
-        $postes = $participantController->getRameurPost();
+        $postes = $participantController->getRameurPoste();
         $is_Coach = $profileController->isCoach();
+
         foreach ($seances as $seance) {
             $participantStatus[$seance->id] = $this->verifyParticipant($seance->id);
         }
         foreach ($seances as $seance) {
             $is_Max_User[$seance->id] = $this->isMaxUser($seance->id);
         }
+        foreach ($seances as $seance) {
+            $is_Poste_Rameur[$seance->id] = $participantController->getRameurPosteById($id, $seance->id);
+        }
 
-        return view('seances.index', compact('seances', 'id', 'participantStatus', 'is_Coach', 'is_Max_User', 'postes'));
+        return view('seances.index', compact('seances', 'id', 'participantStatus', 'is_Coach', 'is_Max_User', 'postes', 'is_Poste_Rameur'));
     }
 
     /**
@@ -89,6 +94,7 @@ class SeanceController extends Controller
     {
         $seance = Seance::find($id);
         $seance->delete();
+        DB::table('participants')->where('id_seance', '=', $id)->delete();
 
         return redirect()->route('seances.index')
             ->with('success', 'Seance deleted successfully');
@@ -106,12 +112,15 @@ class SeanceController extends Controller
         return view('seances.edit', compact('seance'));
     }
 
-    public function addParticipant($id_seance)
+    public function addParticipant(Request $request, $id_seance)
     {
+
+        $poste = $request->input('poste');
         $id = Auth::id();
         Participant::create([
             'id_seance' => $id_seance,
             'id_user' => $id,
+            'id_poste_rameur' => $poste,
         ]);
         return $this->index();
     }
@@ -123,6 +132,7 @@ class SeanceController extends Controller
             ->where('id_seance', $id_seance)
             ->where('id_user', $id)
             ->delete();
+
         return $this->index();
     }
 
@@ -142,6 +152,7 @@ class SeanceController extends Controller
         $result = DB::table('participants')
             ->where('id_seance', $id_seance)
             ->count();
+
         return $result;
     }
 
@@ -154,6 +165,7 @@ class SeanceController extends Controller
             ->where('id_seance', $id_seance)
             ->select('users.name', 'poste_rameurs.libelle')
             ->get();
+
         return $result;
     }
 }

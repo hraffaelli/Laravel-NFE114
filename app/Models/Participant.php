@@ -12,6 +12,6 @@ class Participant extends Model
     protected $fillable = [
         'id_seance',
         'id_user',
-        //'id_poste_rameur',
+        'id_poste_rameur',
     ];
 }

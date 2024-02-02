@@ -6,7 +6,6 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\Models\Seance;
 use App\Models\User;
-use App\Models\Participant;
 use App\Models\PosteRameur;
 use App\Models\UsersStatuts;
 
