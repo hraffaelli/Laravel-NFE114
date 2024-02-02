@@ -56,7 +56,6 @@
                                         {{ $is_Max_User[$seance->id] }}/{{ $seance->max_users }}
                                     </td>
 
-
                                     @if ($is_Max_User[$seance->id] != $seance->max_users)
 
                                     @if($participantStatus[$seance->id] == 0)
@@ -65,7 +64,7 @@
                                     <form action="{{ route('seances.addParticipant', $seance->id) }}" method="POST" style="display: inline-block;">
                                         @csrf
                                         <td class=" px-6 py-4 text-sm leading-5 text-white-100 whitespace-no-wrap text-center">
-                                            <select id="poste" name="poste" class="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-widest text-gray-700 shadow-sm transition duration-150 ease-in-out hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-25" required autofocus autocomplete="poste">
+                                            <select id="poste" name="poste" class="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-widest text-gray-700 shadow-sm transition duration-150 ease-in-out hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-25" required>
                                                 @foreach($postes as $poste)
                                                 <option class="text-black-100" value="{{ $poste->id }}">{{ $poste->libelle }}</option>
                                                 @endforeach
