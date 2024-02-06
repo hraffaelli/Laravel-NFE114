@@ -30,6 +30,13 @@ class DatabaseSeeder extends Seeder
             'password' => '123456',
         ]);
 
+        User::create([
+            'name' => 'Teva',
+            'email' => 'teva@example.com',
+            'statut' => '1',
+            'password' => '123456',
+        ]);
+
         Seance::create([
             'date' => '2024-01-27',
             'lieu' => 'Papeete',
