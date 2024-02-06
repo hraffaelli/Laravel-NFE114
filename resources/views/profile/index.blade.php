@@ -20,16 +20,16 @@
                         <table class="min-w-full border divide-y divide-gray-200 w-full rounded-lg">
                             <thead>
                                 <tr>
-                                    <th class="bg-gray-50 px-6 py-3 text-left">
+                                    <th class=" px-6 py-3 text-left">
                                         <span class="text-xs font-medium uppercase leading-4 tracking-wider text-gray-500">Nom</span>
                                     </th>
-                                    <th class="bg-gray-50 px-6 py-3 text-left">
+                                    <th class=" px-6 py-3 text-left">
                                         <span class="text-xs font-medium uppercase leading-4 tracking-wider text-gray-500">mail</span>
                                     </th>
-                                    <th class="bg-gray-50 px-6 py-3 text-left">
+                                    <th class=" px-6 py-3 text-left">
                                         <span class="text-xs font-medium uppercase leading-4 tracking-wider text-gray-500">Statut</span>
                                     </th>
-                                    <th class="w-56 bg-gray-50 px-6 py-3 text-left">
+                                    <th class="w-56  px-6 py-3 text-left">
                                     </th>
                                 </tr>
                             </thead>
