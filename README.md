@@ -3,6 +3,11 @@
 Première étape
 
 ```bash
+
+git checkout v2
+
+Modifier le fichier .env avec vos données
+
 php artisan migrate
 
 php artisan db:seed
