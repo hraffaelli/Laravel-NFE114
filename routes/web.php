@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RameurController;
+use App\Http\Controllers\SessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +31,20 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::get('/rameur',[RameurController::class,'liste_rameur']);
+Route::get('/ajouter',[RameurController::class,'ajouter_rameur']);
+Route::get('/ajouter/traitement',[RameurController::class,'ajouter_rameur_traitement']);
+Route::get('/modifier/{id}',[RameurController::class,'modifier_rameur']);
+Route::get('/modifier-traitement',[RameurController::class,'modifier_rameur_traitement']);
+Route::get('/supprimer/{id}',[RameurController::class,'supprimer_rameur']);
+
+
+Route::get('/session',[SessionController::class,'liste_session']);
+Route::get('/ajouter-session',[SessionController::class,'ajouter_session']);
+Route::get('/ajouter-session/traitement',[SessionController::class,'ajouter_session_traitement']);
+Route::get('/modifier-session/{id}',[SessionController::class,'modifier_session']);
+Route::get('/modifier-session-traitement',[SessionController::class,'modifier_session_traitement']);
+Route::delete('/supprimer-session/{id}',[SessionController::class,'supprimer_session']);
+
+
