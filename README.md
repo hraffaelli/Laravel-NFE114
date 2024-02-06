@@ -40,6 +40,9 @@ php artisan serve
 
 **Pour démarrer le service front**
 ```bash
+npm install
+```
+```bash
 npm run dev
 ```
 *Si cela ne démarre pas avec npm, il vous faut installer nodejs LTS :*

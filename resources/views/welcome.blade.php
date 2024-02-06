@@ -34,10 +34,10 @@
                 @auth
                     <a href="{{ url('/seances') }}" class="font-semibold text-gray-600 hover:text-green-600 dark:text-gray-400 dark:hover:text-green-600 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
                 @else
-                    <a href="{{ route('login') }}" class="text-xl font-semibold text-gray-600 hover:text-green-600 dark:text-gray-400 dark:hover:text-green-600 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
+                    <a href="{{ route('login') }}" class="text-xl font-semibold text-gray-600 hover:text-green-600 dark:text-gray-400 dark:hover:text-green-600 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Se connecter</a>
 
                     @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="text-xl font-semibold text-gray-600 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-500 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
+                        <a href="{{ route('register') }}" class="text-xl font-semibold text-gray-600 hover:text-blue-500 dark:text-gray-400 dark:hover:text-blue-500 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">S'enregistrer</a>
                     @endif
                 @endauth
             @endif
