@@ -23,19 +23,19 @@
                             <thead>
                                 <tr>
                                     <th class=" px-6 py-3 text-center">
-                                        <span class="text-xs font-medium uppercase leading-4 tracking-wider text-gray-500">Date</span>
+                                        <span class="text-xs font-medium uppercase leading-4 tracking-wider text-gray-500 dark:text-gray-400">Date</span>
                                     </th>
                                     <th class=" px-6 py-3 text-center">
-                                        <span class="text-xs font-medium uppercase leading-4 tracking-wider text-gray-500">Lieu</span>
+                                        <span class="text-xs font-medium uppercase leading-4 tracking-wider text-gray-500 dark:text-gray-400">Lieu</span>
                                     </th>
                                     <th class=" px-6 py-3 text-center">
-                                        <span class="text-xs font-medium uppercase leading-4 tracking-wider text-gray-500">Horaire</span>
+                                        <span class="text-xs font-medium uppercase leading-4 tracking-wider text-gray-500 dark:text-gray-400">Horaire</span>
                                     </th>
                                     <th class=" px-6 py-3 text-center">
-                                        <span class="text-xs font-medium uppercase leading-4 tracking-wider text-gray-500">Max personne</span>
+                                        <span class="text-xs font-medium uppercase leading-4 tracking-wider text-gray-500 dark:text-gray-400">Max personne</span>
                                     </th>
                                     <th class="w-56  px-6 py-3 text-center">
-                                        <span class="text-xs font-medium uppercase leading-4 tracking-wider text-gray-500">Poste</span>
+                                        <span class="text-xs font-medium uppercase leading-4 tracking-wider text-gray-500 dark:text-gray-400">Poste</span>
                                     </th>
                                 </tr>
                             </thead>
