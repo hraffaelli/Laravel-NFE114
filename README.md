@@ -3,6 +3,7 @@
 Première étape
 
 ```bash
+composer update
 
 git checkout v2
 
